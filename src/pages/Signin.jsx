@@ -1,11 +1,11 @@
-import { useState } from 'react'
-import { SignInUser } from './services/Auth'
-import { useNavigate } from 'react-router-dom'
+import { useState } from "react"
+import { SignInUser } from "../services/Auth"
+import { useNavigate } from "react-router-dom"
 
 const SignIn = ({ setUser }) => {
   let navigate = useNavigate()
 
-  const initialState = { email: '', password: '' }
+  const initialState = { email: "", password: "" }
 
   const [formValues, setFormValues] = useState(initialState)
 
@@ -18,7 +18,7 @@ const SignIn = ({ setUser }) => {
     const userData = await SignInUser(formValues)
     setFormValues(initialState)
     setUser(userData)
-    navigate('/feed')
+    navigate("/feed")
   }
 
   return (

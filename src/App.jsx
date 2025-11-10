@@ -1,13 +1,13 @@
-import { useState, useEffect } from 'react'
-import { Route,Routes } from 'react-router-dom'
-import { CheckSession } from './services/auth'
-// import Register from './pages/Register'
-// import SignIn from './pages/Signin'
-import Nav from './components/Nav'
-import './App.css'
+import { useState, useEffect } from "react"
+import { Route, Routes } from "react-router-dom"
+import { CheckSession } from "./services/Auth"
+import Register from "./pages/Register"
+import SignIn from "./pages/Signin"
+import Nav from "./components/Nav"
+import "./App.css"
 
 const App = () => {
-const [user, setUser] = useState(null)
+  const [user, setUser] = useState(null)
   useEffect(() => {
     const checkToken = async () => {
       //If a token exists, sends token to localStorage to persist logged in user
@@ -27,7 +27,11 @@ const [user, setUser] = useState(null)
   }
   return (
     <>
-    <Nav user={user} handleLogOut={handleLogOut} />
+      <Nav user={user} handleLogOut={handleLogOut} />
+      <Routes>
+        <Route path="/register" element={<Register />} />
+        <Route path="/signin" element={<SignIn setUser={setUser} />} />
+      </Routes>
     </>
   )
 }

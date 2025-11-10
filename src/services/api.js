@@ -10,14 +10,10 @@ Client.interceptors.request.use(
     // Reads the token in localStorage
     const token = localStorage.getItem("token")
     // if the token exists, we set the authorization header
-    console.log(token)
     if (token) {
       config.headers["authorization"] = `Bearer ${token}`
     }
     // We return the new config if the token exists or the default config if no token exists.
-    if (config.data instanceof FormData && !config.headers["Content-Type"]) {
-      config.headers["Content-Type"] = "multipart/form-data"
-    }
     return config
     // Provides the token to each request that passes through axios
   },
