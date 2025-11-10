@@ -7,6 +7,7 @@ import SignIn from "./pages/Signin"
 import Nav from "./components/Nav"
 import Welcome from "./pages/Welcome"
 import GameList from "./pages/GameList"
+import GameDetails from "./pages/GameDetails"
 import "./App.css"
 
 const App = () => {
@@ -36,6 +37,7 @@ const App = () => {
         <Route path="/register" element={<Register />} />
         <Route path="/signin" element={<SignIn setUser={setUser} />} />
         <Route path="/gameList" element={<GameList/>}/>
+        <Route path="/Game/:id" element={<GameDetails/>}/>
       </Routes>
     </>
   )
