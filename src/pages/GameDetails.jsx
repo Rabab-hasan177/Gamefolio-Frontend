@@ -2,11 +2,14 @@ import { useEffect, useState } from "react"
 import { useParams, useNavigate } from "react-router-dom"
 import { Link } from "react-router-dom"
 import Client from "../services/api"
+import CommentForm from "./CommentForm"
+const GameDetails = ({ user }) => {
 
-const GameDetails = () => {
   const { id } = useParams()
   const [games, setGames] = useState(null)
+  const [user, setUser] = useState(null)
   const navigate = useNavigate()
+
   useEffect(() => {
     const getGames = async () => {
       try {
@@ -42,14 +45,13 @@ const GameDetails = () => {
         <strong>Description:</strong> {games.description}
       </p>
 
-      {/* i need to use the map because i want to preview the images from an array (using a forEach will return undefined) using map will create new array with each image and then preview it one by one. */}
 
       <Link to={"/"}> Back </Link>
 
       <button onClick={handleDelete} className="deleteGame">
         Delete
       </button>
-
+    <CommentForm gameId={id} user={user} />
     </div>
   )
 }

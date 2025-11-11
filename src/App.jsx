@@ -9,6 +9,7 @@ import Welcome from "./pages/Welcome"
 import GameList from "./pages/GameList"
 import GameDetails from "./pages/GameDetails"
 import GameForm from "./pages/GameForm"
+import CommentForm from "./pages/CommentForm"
 import "./App.css"
 
 const App = () => {
@@ -40,6 +41,7 @@ const App = () => {
         <Route path="/gameList" element={<GameList/>}/>
         <Route path="/Game/:id" element={<GameDetails/>}/>
         <Route path="/gameForm" element={<GameForm user={user}/>}/>
+        <Route path="/commentForm" element={<CommentForm user={user}/>}/>
 
       </Routes>
     </>

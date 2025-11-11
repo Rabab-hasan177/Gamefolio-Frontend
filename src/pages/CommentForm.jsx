@@ -1,42 +1,80 @@
-import { useState } from "react"
-import { useNavigate } from "react-router-dom"
+import { useEffect, useState } from "react"
 import Client from "../services/api"
-const CommentForm = ({ user }) => {
-  let navigate = useNavigate()
-  const initialState ={
-    description : ""
-  }
-  // initial state is empty
-  const [formValue, setFormValue] = useState(initialState)
-  const[game, setGame] = useState(null)
 
-  const handleChange = (e) => {
-    setFormValue({ ...formValue, [e.target.name]: e.target.value })
-  }
-  const handleSubmit =async (e) => {
+const CommentForm = ({ gameId, user }) => {
+  const [comments, setComments] = useState([])
+  const [description, setDescription] = useState("")
+
+  useEffect(() => {
+    const getComments = async () => {
+      try {
+        const response = await Client.get(`/Game/${gameId}`)
+        setComments(response.data.comments || [])
+      } catch (error) {
+        console.error("Error fetching comments:", error)
+      }
+    }
+    getComments()
+  }, [gameId])
+
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    const formData = { ...formValue, owner: user.id }
-    const response = await Client.post("/Game", formData)
-    setGame(response.data)
-    setFormValue(initialState)
-    navigate(`/Game/${response.data._id}`)
+    try {
+      const response = await Client.post(`/comment/${gameId}`, {
+        description,
+        owner: user?.id,
+      })
+
+      setComments([response.data, ...comments])
+      setDescription("")
+    } catch (error) {
+      console.error("Error submitting comment:", error)
+    }
   }
-  return user ? (
-    <div>
-    <form onSubmit={handleSubmit}>
 
-    <label htmlFor="description">Description</label>
+  const handleDelete = async (commentId) => {
+    try {
+      await Client.delete(`/comment/${commentId}`)
+      setComments(comments.filter((comment) => comment._id !== commentId))
+    } catch (error) {
+      console.error("Error deleting comment:", error)
+    }
+  }
+
+  return (
+    <div className="comment-section">
+      <div className="commentList">
+        <h4>Comments:</h4>
+        {comments.length === 0 ? (
+          <p>No comments yet.</p>
+        ) : (
+          comments.map((comment) => (
+            <div key={comment._id} className="comment">
+              <p>{comment.description}</p>
+              {user && user.id === comment.owner && (
+                <button onClick={() => handleDelete(comment._id)}>
+                  Delete
+                </button>
+              )}
+            </div>
+          ))
+        )}
+      </div>
+
+      <form onSubmit={handleSubmit}>
+        <label htmlFor="description">Add a Comment:</label>
         <textarea
+          id="description"
           name="description"
-          value={formValue.description}
-          onChange={handleChange}
-          placeholder="Detailed job description..."
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
           required
-        />
+        ></textarea>
 
-        <button type="submit">Post</button>
-        </form>
-        </div>
-  ):null
+        <button type="submit">Post Comment</button>
+      </form>
+    </div>
+  )
 }
+
 export default CommentForm
