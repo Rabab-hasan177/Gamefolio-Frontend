@@ -8,6 +8,7 @@ import Nav from "./components/Nav"
 import Welcome from "./pages/Welcome"
 import GameList from "./pages/GameList"
 import GameDetails from "./pages/GameDetails"
+import GameForm from "./pages/GameForm"
 import "./App.css"
 
 const App = () => {
@@ -38,6 +39,8 @@ const App = () => {
         <Route path="/signin" element={<SignIn setUser={setUser} />} />
         <Route path="/gameList" element={<GameList/>}/>
         <Route path="/Game/:id" element={<GameDetails/>}/>
+        <Route path="/gameForm" element={<GameForm user={user}/>}/>
+
       </Routes>
     </>
   )

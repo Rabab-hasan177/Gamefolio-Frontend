@@ -10,6 +10,8 @@ const Nav = ({ user, handleLogOut }) => {
           Sign Out
         </Link>
         <Link to="/gameList">gamelist</Link>
+        <Link to="/gameForm">gameform</Link>
+
       </>
     )
   }
