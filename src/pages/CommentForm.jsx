@@ -2,11 +2,13 @@ import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import Client from "../services/api"
 const CommentForm = ({ user }) => {
+  let navigate = useNavigate()
   const initialState ={
     description : ""
   }
   // initial state is empty
   const [formValue, setFormValue] = useState(initialState)
+  const[game, setGame] = useState(null)
 
   const handleChange = (e) => {
     setFormValue({ ...formValue, [e.target.name]: e.target.value })
