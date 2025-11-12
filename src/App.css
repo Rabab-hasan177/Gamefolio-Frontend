@@ -164,3 +164,430 @@ body {
   opacity: 0.6;
   cursor: not-allowed;
 }
+.signin {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 90vh;
+  background: linear-gradient(135deg, #a78bfa, #fcd34d); /* purple-yellow gradient */
+  font-family: "Poppins", sans-serif;
+  padding: 2rem;
+}
+
+/* Title image */
+.signin img {
+  width: 150px;
+  height: auto;
+  margin-bottom: 1.5rem;
+}
+
+/* Form container */
+.signin form {
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(12px);
+  border-radius: 20px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+  width: 100%;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+/* Input labels and wrappers */
+.input-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.input-wrapper label {
+  margin-bottom: 0.4rem;
+  color: #fff;
+  font-weight: 500;
+}
+
+.input-wrapper input {
+  padding: 0.8rem 1rem;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  background-color: rgba(255, 255, 255, 0.8);
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.input-wrapper input:focus {
+  background-color: #fff;
+  box-shadow: 0 0 8px rgba(167, 139, 250, 0.6);
+}
+
+/* Sign In button */
+.signin button {
+  background-color: #facc15;
+  color: #4c1d95;
+  font-weight: 600;
+  font-size: 1rem;
+  border: none;
+  padding: 0.8rem;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.signin button:hover:not(:disabled) {
+  background-color: #fcd34d;
+  transform: translateY(-2px);
+}
+
+.signin button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #fcd34d; /* deep purple */
+  padding: 1rem 2rem;
+  color:purple; /* yellow text */
+  font-family: "Poppins", sans-serif;
+}
+
+header h3 {
+  margin: 0;
+  font-weight: 600;
+}
+
+nav {
+  display: flex;
+  gap: 1rem;
+}
+
+nav a {
+  text-decoration: none;
+  color: purple; /* yellow links */
+  font-weight: 500;
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
+.game-list {
+  padding: 2rem;
+  font-family: "Poppins", sans-serif;
+  color: #4c1d95; /* deep purple text */
+}
+
+.game-list h2 {
+  text-align: center;
+  margin-bottom: 2rem;
+  color: #fcd34d; /* yellow heading */
+}
+
+/* Grid layout for games */
+.game-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+}
+
+/* Individual game card */
+.game-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  border-radius: 12px;
+  background-color: #fcd34d; /* yellow card background */
+  color: #4c1d95; /* purple text */
+  text-decoration: none;
+  font-weight: 600;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.game-card h3 {
+  margin: 0;
+  text-align: center;
+}
+
+/* Hover effect */
+.game-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* No games message */
+.game-grid p {
+  grid-column: 1 / -1;
+  text-align: center;
+  color: #4c1d95;
+  font-weight: 500;
+}
+
+.game-details {
+  max-width: 700px;
+  margin: 2rem auto;
+  padding: 2rem;
+  font-family: "Poppins", sans-serif;
+  color: #4c1d95; /* deep purple text */
+  background-color: #fef8f5;
+  border-radius: 15px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+}
+
+.game-details h2 {
+  text-align: center;
+  color: #fcd34d;
+  margin-bottom: 1.5rem;
+}
+
+.game-details p {
+  margin: 0.6rem 0;
+  line-height: 1.5;
+}
+
+.game-details img {
+  display: block;
+  max-width: 100%;
+  border-radius: 12px;
+  margin: 1rem 0 2rem;
+}
+
+.game-details a,
+.game-details button {
+  margin-right: 1rem;
+  margin-top: 1rem;
+}
+
+.game-details a {
+  text-decoration: none;
+  color: #4c1d95;
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  background-color: #fcd34d;
+  transition: all 0.2s ease;
+}
+
+.game-details a:hover {
+  background-color: #fddf6b;
+}
+
+.game-details button {
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  border: none;
+  background-color: #4c1d95;
+  color: #fcd34d;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.game-details button:hover {
+  background-color: #3b136f;
+}
+
+.deleteGame {
+  background-color: #dc2626; /* red for delete */
+}
+
+.deleteGame:hover {
+  background-color: #b91c1c;
+}
+.editGame {
+  display: inline-block;
+  text-decoration: none;
+  color: #4c1d95; /* purple text */
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  background-color: #fcd34d; /* yellow */
+  transition: all 0.2s ease;
+}
+
+.editGame:hover {
+  background-color: #fddf6b;
+}
+body {
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+.gameFormContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 90vh;
+  background: linear-gradient(135deg, #a78bfa, #fcd34d); /* purple-yellow gradient */
+  padding: 2rem;
+}
+
+.gameFormContainer h2 {
+  color: #fcd34d;
+  margin-bottom: 2rem;
+  font-size: 2rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+.gameFormContainer form {
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(12px);
+  border-radius: 20px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+  width: 100%;
+  max-width: 500px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.gameFormContainer label {
+  font-weight: 500;
+  color: #fff;
+  margin-bottom: 0.4rem;
+}
+
+.gameFormContainer input,
+.gameFormContainer textarea {
+  padding: 0.8rem 1rem;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  font-size: 1rem;
+  background-color: rgba(255, 255, 255, 0.8);
+  transition: all 0.3s ease;
+}
+
+.gameFormContainer input:focus,
+.gameFormContainer textarea:focus {
+  background-color: #fff;
+  box-shadow: 0 0 8px rgba(167, 139, 250, 0.6);
+}
+
+.gameFormContainer textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.gameFormContainer button {
+  background-color: #facc15;
+  color: #4c1d95;
+  font-weight: 600;
+  font-size: 1rem;
+  border: none;
+  padding: 0.8rem;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.gameFormContainer button:hover:not(:disabled) {
+  background-color: #fcd34d;
+  transform: translateY(-2px);
+}
+
+.gameFormContainer button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+.comment-section {
+  margin-top: 2rem;
+  padding: 1.5rem;
+  background-color: #fef8f5;
+  border-radius: 15px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+  font-family: "Poppins", sans-serif;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.comment-section h4 {
+  color: #4c1d95; /* deep purple heading */
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+.commentList {
+  margin-bottom: 1.5rem;
+}
+
+.comment {
+  background-color: #fcd34d; /* yellow comment background */
+  color: #4c1d95; /* purple text */
+  padding: 0.8rem 1rem;
+  border-radius: 10px;
+  margin-bottom: 0.8rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.comment button {
+  background-color: #dc2626; /* red delete button */
+  color: #fff;
+  border: none;
+  padding: 0.3rem 0.6rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.8rem;
+  transition: all 0.2s ease;
+}
+
+.comment button:hover {
+  background-color: #b91c1c;
+}
+
+/* Comment form */
+.comment-section form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.comment-section label {
+  font-weight: 500;
+  color: #4c1d95;
+}
+
+.comment-section textarea {
+  padding: 0.8rem 1rem;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  outline: none;
+  resize: vertical;
+  min-height: 80px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.comment-section textarea:focus {
+  border-color: #a78bfa;
+  box-shadow: 0 0 8px rgba(167, 139, 250, 0.4);
+}
+
+/* Post button */
+.comment-section button[type="submit"] {
+  background-color: #facc15;
+  color: #4c1d95;
+  font-weight: 600;
+  border: none;
+  padding: 0.8rem;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.comment-section button[type="submit"]:hover {
+  background-color: #fcd34d;
+  transform: translateY(-2px);
+}
+

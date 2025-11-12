@@ -45,9 +45,10 @@ const GameDetails = () => {
       <img src={`http://localhost:3000/${games.image}`} />
 
       <Link to={"/"}> Back </Link>
-      <Link to={`/Game/${id}/edit`}>
-        <button>Edit</button>
-      </Link>
+      <Link to={`/Game/${id}/edit`} className="editGame">
+  Edit
+</Link>
+
       <button onClick={handleDelete} className="deleteGame">
         Delete
       </button>
