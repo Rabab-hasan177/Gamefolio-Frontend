@@ -4,7 +4,6 @@ import { Link } from "react-router-dom"
 import Client from "../services/api"
 import CommentForm from "./CommentForm"
 const GameDetails = () => {
-
   const { id } = useParams()
   const [games, setGames] = useState(null)
   const [user, setUser] = useState(null)
@@ -32,7 +31,6 @@ const GameDetails = () => {
     }
   }
 
-
   if (!games) return <p>Loading game details...</p>
 
   return (
@@ -46,13 +44,14 @@ const GameDetails = () => {
       </p>
       <img src={`http://localhost:3000/${games.image}`} />
 
-
       <Link to={"/"}> Back </Link>
-
+      <Link to={`/Game/${id}/edit`}>
+        <button>Edit</button>
+      </Link>
       <button onClick={handleDelete} className="deleteGame">
         Delete
       </button>
-    <CommentForm gameId={id} user={user} />
+      <CommentForm gameId={id} user={user} />
     </div>
   )
 }
