@@ -1,9 +1,10 @@
 import { useState } from "react"
-import { useNavigate } from "react-router-dom"
+import { useNavigate, useParams } from "react-router-dom"
 import Client from "../services/api"
 
-const GameForm = ({ user }) => {
+const UpdateGameForm = ({ user }) => {
   let navigate = useNavigate()
+  let { gameId } = useParams()
 
   const initialState = {
     name: "",
@@ -11,23 +12,21 @@ const GameForm = ({ user }) => {
   }
 
   const [formValue, setFormValue] = useState(initialState)
-  const [game, setGame] = useState(null)
   const [imageFile, setImageFile] = useState(null)
 
   const handleChange = (event) => {
     setFormValue({ ...formValue, [event.target.name]: event.target.value })
   }
+
   const handleFileChange = (event) => {
     setImageFile(event.target.files[0])
   }
-
-  console.log(formValue)
 
   const handleSubmit = async (event) => {
     event.preventDefault()
 
     if (!user) {
-      alert("Please sign in to post a game")
+      alert("Please sign in to update the game")
       return
     }
 
@@ -39,23 +38,25 @@ const GameForm = ({ user }) => {
       if (imageFile) {
         formData.append("image", imageFile)
       }
-      const response = await Client.post("/Game/createGame", formData,{
-      headers: {
-        "Content-Type": "multipart/form-data",
-      },})
-      setGame(response.data)
+
+      const response = await Client.put(`/Game/${gameId}`, formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      })
+
       setFormValue(initialState)
       setImageFile(null)
       navigate(`/Game/${response.data._id}`)
     } catch (error) {
-      console.error("Error posting game:", error)
-      alert("Failed to post game. Please try again.")
+      console.error("Error updating game:", error)
+      alert("Failed to update game. Please try again.")
     }
   }
 
   return (
     <div className="gameFormContainer">
-      <h2>Post game</h2>
+      <h2>Update Game</h2>
 
       <form onSubmit={handleSubmit}>
         <label htmlFor="name">Name</label>
@@ -64,10 +65,11 @@ const GameForm = ({ user }) => {
           name="name"
           value={formValue.name}
           onChange={handleChange}
-          placeholder="game name"
+          placeholder="Update game name"
           required
         />
-        <label htmlFor="image">Upload Image:</label>
+
+        <label htmlFor="image">Upload New Image:</label>
         <input
           type="file"
           name="image"
@@ -80,14 +82,14 @@ const GameForm = ({ user }) => {
           name="description"
           value={formValue.description}
           onChange={handleChange}
-          placeholder="Detailed game description..."
+          placeholder="Update game description..."
           required
         />
 
-        <button type="submit">Post</button>
+        <button type="submit">Update</button>
       </form>
     </div>
   )
 }
 
-export default GameForm
+export default UpdateGameForm

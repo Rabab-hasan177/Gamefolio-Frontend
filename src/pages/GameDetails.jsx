@@ -3,7 +3,7 @@ import { useParams, useNavigate } from "react-router-dom"
 import { Link } from "react-router-dom"
 import Client from "../services/api"
 import CommentForm from "./CommentForm"
-const GameDetails = ({ user }) => {
+const GameDetails = () => {
 
   const { id } = useParams()
   const [games, setGames] = useState(null)
@@ -44,6 +44,7 @@ const GameDetails = ({ user }) => {
       <p>
         <strong>Description:</strong> {games.description}
       </p>
+      <img src={`http://localhost:3000/${games.image}`} />
 
 
       <Link to={"/"}> Back </Link>

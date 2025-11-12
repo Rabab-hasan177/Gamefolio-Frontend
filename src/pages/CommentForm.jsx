@@ -17,6 +17,10 @@ const CommentForm = ({ gameId, user }) => {
     getComments()
   }, [gameId])
 
+  const handleChange = (e) => {
+    setDescription(e.target.value)
+  }
+
   const handleSubmit = async (e) => {
     e.preventDefault()
     try {
@@ -67,7 +71,7 @@ const CommentForm = ({ gameId, user }) => {
           id="description"
           name="description"
           value={description}
-          onChange={(e) => setDescription(e.target.value)}
+          onChange={handleChange}
           required
         ></textarea>
 
