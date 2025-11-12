@@ -590,4 +590,90 @@ body {
   background-color: #fcd34d;
   transform: translateY(-2px);
 }
+body {
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+.gameFormContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 90vh;
+  background: linear-gradient(135deg, #a78bfa, #fcd34d); /* purple-yellow gradient */
+  padding: 2rem;
+}
+
+.gameFormContainer h2 {
+  color: #fcd34d;
+  margin-bottom: 2rem;
+  font-size: 2rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+.gameFormContainer form {
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(12px);
+  border-radius: 20px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+  width: 100%;
+  max-width: 500px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.gameFormContainer label {
+  font-weight: 500;
+  color: #fff;
+  margin-bottom: 0.4rem;
+}
+
+.gameFormContainer input,
+.gameFormContainer textarea {
+  padding: 0.8rem 1rem;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  font-size: 1rem;
+  background-color: rgba(255, 255, 255, 0.8);
+  transition: all 0.3s ease;
+}
+
+.gameFormContainer input:focus,
+.gameFormContainer textarea:focus {
+  background-color: #fff;
+  box-shadow: 0 0 8px rgba(167, 139, 250, 0.6);
+}
+
+.gameFormContainer textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.gameFormContainer button {
+  background-color: #facc15;
+  color: #4c1d95;
+  font-weight: 600;
+  font-size: 1rem;
+  border: none;
+  padding: 0.8rem;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.gameFormContainer button:hover:not(:disabled) {
+  background-color: #fcd34d;
+  transform: translateY(-2px);
+}
+
+.gameFormContainer button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
 
